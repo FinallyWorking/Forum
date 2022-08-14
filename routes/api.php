@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('auth')->group(__DIR__ . '/api/auth.php');
+Route::prefix('auth')->name('auth.')->group(__DIR__ . '/api/auth.php');

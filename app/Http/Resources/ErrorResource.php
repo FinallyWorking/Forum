@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\ErrorCode;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ErrorResource extends JsonResource
@@ -17,6 +18,16 @@ class ErrorResource extends JsonResource
         $this->data = array_key_exists('data', $data) ? $data['data'] : [];
         $this->message = array_key_exists('message', $data) ? $data['message'] : '';
         $this->status = $status;
+        $this->code = array_key_exists('code', $data) ? $this->getCodeAsString($data['code']) : 0;
+    }
+
+    private function getCodeAsString($code)
+    {
+        if (! $code) {
+            return null;
+        }
+
+        return ErrorCode::fromValue($code)->key;
     }
 
     /**
@@ -40,6 +51,6 @@ class ErrorResource extends JsonResource
      */
     public function toArray($request)
     {
-        return new BaseResource($this->data, $this->message, $this->status);
+        return new BaseResource($this->data, $this->message, $this->status, $this->code);
     }
 }

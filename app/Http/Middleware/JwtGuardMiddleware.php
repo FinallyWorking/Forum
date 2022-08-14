@@ -17,9 +17,10 @@ class JwtGuardMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::getDefaultDriver() == "web") {
+        if (Auth::getDefaultDriver() == 'web') {
             Auth::setDefaultDriver('api');
         }
+
         return $next($request);
     }
 }

@@ -12,11 +12,12 @@ class BaseResource extends JsonResource
 
     private int $status;
 
-    public function __construct(array $data, string $message = '', int $status = 200)
+    public function __construct(array $data, string $message = '', int $status = 200, string $code = null)
     {
         $this->data = $data;
         $this->message = $message;
         $this->status = $status;
+        $this->code = $code;
     }
 
     /**
@@ -32,6 +33,10 @@ class BaseResource extends JsonResource
 
         if ($this->message) {
             $response['message'] = $this->message;
+        }
+
+        if ($this->code) {
+            $response['code'] = $this->code;
         }
 
         return $response;
