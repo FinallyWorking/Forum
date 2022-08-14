@@ -2,9 +2,8 @@
 
 namespace App\Repositories;
 
-use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
-use App\Repositories\RepositoryInterface;
+use Illuminate\Support\Collection;
 
 class BaseRepository implements RepositoryInterface
 {

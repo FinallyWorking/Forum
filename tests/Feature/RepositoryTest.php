@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\Models\User;
 use App\Repositories\Eloquent\UserRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 /**
  * Testing base functionality of repo using user repository
@@ -21,6 +21,7 @@ class RepositoryTest extends TestCase
         User::factory()->count(3)->create();
         $this->userRepo = new UserRepository;
     }
+
     /**
      * A basic feature test example.
      *
@@ -43,16 +44,16 @@ class RepositoryTest extends TestCase
     public function test_user_repo_create()
     {
         $userData = [
-            'name' => "test user",
-            'email' => "random@email.com",
-            'password' => "some password",
+            'name' => 'test user',
+            'email' => 'random@email.com',
+            'password' => 'some password',
         ];
 
         $createdUser = $this->userRepo->create($userData);
 
-        $this->assertEquals($createdUser->name, "test user");
-        $this->assertEquals($createdUser->email, "random@email.com");
-        $this->assertEquals($createdUser->password, "some password");
+        $this->assertEquals($createdUser->name, 'test user');
+        $this->assertEquals($createdUser->email, 'random@email.com');
+        $this->assertEquals($createdUser->password, 'some password');
     }
 
     public function test_user_repo_update()
@@ -60,14 +61,14 @@ class RepositoryTest extends TestCase
         $user = User::first();
 
         $this->userRepo->update($user->id, [
-            "name" => "random name",
-            "email" => "random@email.com"
+            'name' => 'random name',
+            'email' => 'random@email.com',
         ]);
 
         $user->refresh();
 
-        $this->assertEquals($user->name, "random name");
-        $this->assertEquals($user->email, "random@email.com");
+        $this->assertEquals($user->name, 'random name');
+        $this->assertEquals($user->email, 'random@email.com');
     }
 
     public function test_user_repo_delete()
