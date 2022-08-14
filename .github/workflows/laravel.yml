@@ -69,12 +69,8 @@ jobs:
         php artisan config:clear
         php artisan route:clear
 
-    - name: Run PHPCS
-      run: |
-        ./vendor/bin/pint --test
+    - name: Run PINT
+      run: ./vendor/bin/pint --test
 
     - name: Executing tests (Unit and Feature tests)
       run: ./vendor/bin/phpunit
-
-    - uses: colpal/actions-clean@v1
-      if: ${{ always() }}
