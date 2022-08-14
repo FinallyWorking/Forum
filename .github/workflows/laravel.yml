@@ -57,7 +57,7 @@ jobs:
     - name: Generate key
       run: |
         php artisan key:generate
-        php artisna jwt:secret --force
+        php artisan jwt:secret --force
 
     - name: Optimize Laravel
       run: |
