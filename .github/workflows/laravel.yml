@@ -28,7 +28,6 @@ jobs:
 
     - name: Copy .env
       run: |
-        php -r "file_exists('.env.testing') || copy('.env.ci', '.env.testing');"
         php -r "file_exists('.env') || copy('.env.example', '.env');"
 
     - name: Cache Dependencies
