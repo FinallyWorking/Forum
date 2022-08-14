@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 
 class BaseRepository implements RepositoryInterface
 {
-    public function __construct(private Model $model)
+    public function __construct(protected Model $model)
     {
     }
 
